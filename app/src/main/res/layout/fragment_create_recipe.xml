@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="409dp"
+    android:layout_height="729dp"
+    tools:layout_editor_absoluteX="1dp"
+    tools:layout_editor_absoluteY="1dp"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".CreateRecipe"
+        tools:ignore="ScrollViewSize">
+
+        <TextView
+            android:id="@+id/Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Title"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="16dp"/>
+
+        <EditText
+            android:id="@+id/Recipe_Name"
+            android:inputType="text"
+            android:layout_width="223dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="68dp"
+            android:hint="@string/Recipe_Name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.107"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/Get_Image"
+            android:layout_width="109dp"
+            android:layout_height="109dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.863"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.096" />
+
+        <ImageButton
+            android:id="@+id/Camera"
+            android:layout_width="75dp"
+            android:layout_height="35dp"
+            android:src="@drawable/baseline_camera_alt_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.832"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Get_Image"
+            app:layout_constraintVertical_bias="0.0"
+            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+        <TextView
+            android:id="@+id/MealType_Title"
+            android:layout_width="82dp"
+            android:layout_height="25dp"
+            android:text="@string/Mealtype_Title"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.048"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.303" />
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="141dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.365"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.298" />
+
+        <TextView
+            android:id="@+id/Pretime_title"
+            android:layout_width="82dp"
+            android:layout_height="25dp"
+            android:text="@string/Preptime_Title"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.048"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.387" />
+
+        <EditText
+            android:id="@+id/get_preptime"
+            android:layout_width="143dp"
+            android:layout_height="48dp"
+            android:inputType="number"
+            android:hint="@string/get_preptime"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/Pretime_title"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.38" />
+
+        <TextView
+            android:id="@+id/Servingsize_title"
+            android:layout_width="95dp"
+            android:layout_height="21dp"
+            android:text="@string/Servingsize_title"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.047"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.464" />
+
+        <EditText
+            android:id="@+id/Get_Serving_Size"
+            android:layout_width="149dp"
+            android:layout_height="48dp"
+            android:hint="@string/get_servingsize"
+            android:textSize="16sp"
+            android:inputType="number"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/Servingsize_title"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.461" />
+
+        <TextView
+            android:id="@+id/Ingredients_Title"
+            android:layout_width="87dp"
+            android:layout_height="26dp"
+            android:text="@string/Ingredients_Title"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.062"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.549" />
+
+
+        <ImageButton
+            android:id="@+id/addIngredient"
+            android:layout_width="30dp"
+            android:layout_height="26dp"
+            android:layout_marginTop="386dp"
+            android:src="@drawable/baseline_add_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/Ingredients_Title"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+        <TextView
+            android:id="@+id/ingredient_list"
+            android:layout_width="27dp"
+            android:layout_height="38dp"
+            android:layout_marginTop="8dp"
+            android:text="1."
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.089"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Ingredients_Title" />
+
+        <EditText
+            android:id="@+id/get_ingredients"
+            android:inputType="text"
+            android:layout_width="329dp"
+            android:layout_height="48dp"
+            android:hint="@string/get_ingredients"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.762"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Ingredients_Title"
+            app:layout_constraintVertical_bias="0.007" />
+
+
+        <TextView
+            android:id="@+id/Steps_Title"
+            android:layout_width="43dp"
+            android:layout_height="26dp"
+            android:text="@string/Steps_Title"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.054"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.716" />
+
+
+        <TextView
+            android:id="@+id/steps_list"
+            android:layout_width="27dp"
+            android:layout_height="38dp"
+            android:layout_marginTop="12dp"
+            android:text="1."
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.089"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Steps_Title" />
+
+        <ImageButton
+            android:id="@+id/addStep"
+            android:layout_width="32dp"
+            android:layout_height="26dp"
+            android:layout_marginTop="504dp"
+            android:src="@drawable/baseline_add_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/Steps_Title"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+        <EditText
+            android:id="@+id/get_steps"
+            android:inputType="text"
+            android:layout_width="329dp"
+            android:layout_height="46dp"
+            android:hint="@string/get_steps"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.762"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Steps_Title"
+            app:layout_constraintVertical_bias="0.0"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <Button
+            android:id="@+id/submitbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:text="@string/submitButton"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>
+

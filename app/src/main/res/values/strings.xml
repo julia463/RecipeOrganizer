@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">RecipeOrganizer</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="Title">Create Your Own</string>
+    <string name="Recipe_Name">Recipe Name</string>
+
+    <string name="Mealtype_Title">Meal Type:</string>
+
+    <string name="Preptime_Title">Prep Time:</string>
+    <string name="get_preptime">preptime</string>
+
+    <string name="Servingsize_title">Serving Size:</string>
+    <string name="get_servingsize">serving size</string>
+
+    <string name="Ingredients_Title">Ingredients</string>
+    <string name="get_ingredients">Enter Ingredient</string>
+
+    <string name="Steps_Title">Steps</string>
+    <string name="get_steps">Enter Steps</string>
+
+    <string name="submitButton">Submit</string>
+</resources>
