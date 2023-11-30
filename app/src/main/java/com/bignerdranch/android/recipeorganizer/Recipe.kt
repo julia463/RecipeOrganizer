@@ -12,4 +12,5 @@ data class Recipe(
     val steps: List<String>,
     val similarRecipes: List<String>,
     val dietaryAccomodations: List<String>,
+    val photoFileName: String? = null,
 )

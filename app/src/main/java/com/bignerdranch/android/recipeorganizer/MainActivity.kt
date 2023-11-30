@@ -1,37 +1,45 @@
 package com.bignerdranch.android.recipeorganizer
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import com.bignerdranch.android.recipeorganizer.databinding.ActivityMainBinding
+import android.view.View
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_main)
 
-        binding.bottomNavigationView.setOnItemSelectedListener {
-            when (it.itemId) {
-                R.id.Home -> replaceFragment(Home())
-                R.id.CreateRecipe -> replaceFragment(CreateRecipe())
+        if (savedInstanceState == null) {
+            val recipeListFragment = RecipeListFragment()
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.container, recipeListFragment)
+                .commit()
+        }
 
-                else -> {
+        // Handle the click event for the create_recipe_button
+        findViewById<ImageView>(R.id.create_recipe_button).setOnClickListener {
+            val createRecipeFragment = CreateRecipeFragment()
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.container, createRecipeFragment)
+                .addToBackStack(null)
+                .commit()
+        }
 
-                }
-            }
-            true
+        findViewById<TextView>(R.id.home_button).setOnClickListener {
+            val recipeListFragment = RecipeListFragment()
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.container, recipeListFragment)
+                .commit()
         }
     }
 
-    private fun replaceFragment(fragment : Fragment) {
-        val fragmentManager = supportFragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.frame_layout,fragment)
-        fragmentTransaction.commit()
+    fun onAppNameClick(view: View) {
+        val recipeListFragment = RecipeListFragment()
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.container, recipeListFragment)
+            .commit()
     }
 }
