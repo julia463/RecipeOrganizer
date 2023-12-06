@@ -26,7 +26,7 @@ class CreateRecipeFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_create_recipe, container, false)
 
-        spinner = view.findViewById(R.id.spinner)
+        spinner = view.findViewById(R.id.meal_type)
 
         val arrayAdapter = ArrayAdapter<String>(
             requireContext(),
