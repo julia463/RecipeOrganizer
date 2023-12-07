@@ -1,12 +1,13 @@
 package com.bignerdranch.android.recipeorganizer
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
-import com.bignerdranch.android.recipeorganizer.R
+import java.util.UUID
 
 class CreateRecipeFragment : Fragment() {
 
@@ -15,7 +16,6 @@ class CreateRecipeFragment : Fragment() {
     private lateinit var stepsContainer: LinearLayout
     private var stepsCount = 1
     private var ingredientCount = 1
-
 
     val mealtype_array = arrayOf("select mealtype", "Breakfast", "Lunch", "Dinner", "Dessert")
 
@@ -68,7 +68,43 @@ class CreateRecipeFragment : Fragment() {
             addNewStepEditText()
         }
 
+        // SUBMIT BUTTON
+        val submitButton: Button = view.findViewById(R.id.submit_button)
+        submitButton.setOnClickListener {
+            onSubmitButtonClicked()
+        }
+
         return view
+    }
+
+    private fun onSubmitButtonClicked() {
+        // Get input values
+        val nameEditText: EditText = view?.findViewById(R.id.recipe_title) ?: return
+        val name = nameEditText.text.toString()
+        val mealType = mealtype_array[spinner.selectedItemPosition]
+        val prepTimeEditText: EditText = view?.findViewById(R.id.preptime_info) ?: return
+        val prepTime = prepTimeEditText.text.toString()
+        val servingSizeEditText: EditText = view?.findViewById(R.id.servingsize_info) ?: return
+        val servingSize = servingSizeEditText.text.toString()
+        val ingredients = getIngredients()
+        val steps = getSteps()
+
+        // Create a new Recipe object
+        val newRecipe = Recipe(UUID.randomUUID(), name, mealType, prepTime, servingSize, ingredients, steps)
+
+        // Notify the MainActivity about the new recipe
+        val mainActivity = requireActivity() as? MainActivity
+        mainActivity?.onRecipeCreated(newRecipe)
+
+        // Pop the current fragment from the back stack
+        requireActivity().supportFragmentManager.popBackStack()
+
+        // Find the RecipeListFragment and notify it about the new recipe
+        val recipeListFragment = requireActivity().supportFragmentManager.findFragmentByTag(RecipeListFragment::class.java.simpleName) as? RecipeListFragment
+        recipeListFragment?.onRecipeCreated(newRecipe)
+
+        Log.d("RecipeCreation", "New Recipe: $newRecipe")
+
     }
 
     private fun addNewIngredientEditText() {
@@ -137,5 +173,33 @@ class CreateRecipeFragment : Fragment() {
         newStepLayout.addView(newEditText)
 
         stepsContainer.addView(newStepLayout)
+    }
+
+    private fun getIngredients(): List<String> {
+        val ingredientsList: MutableList<String> = mutableListOf()
+
+        for (i in 1..ingredientCount) {
+            val editText: EditText? = ingredientsContainer.findViewWithTag("ingredient_$i")
+            val ingredientText = editText?.text?.toString()?.trim()
+            if (!ingredientText.isNullOrEmpty()) {
+                ingredientsList.add(ingredientText)
+            }
+        }
+
+        return ingredientsList
+    }
+
+    private fun getSteps(): List<String> {
+        val stepsList: MutableList<String> = mutableListOf()
+
+        for (i in 1..stepsCount) {
+            val editText: EditText? = stepsContainer.findViewWithTag("step_$i")
+            val stepText = editText?.text?.toString()?.trim()
+            if (!stepText.isNullOrEmpty()) {
+                stepsList.add(stepText)
+            }
+        }
+
+        return stepsList
     }
 }
