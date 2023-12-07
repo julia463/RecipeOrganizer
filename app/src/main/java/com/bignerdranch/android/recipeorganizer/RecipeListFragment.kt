@@ -32,11 +32,12 @@ class RecipeListFragment : Fragment() {
     ): View? {
         _binding = FragmentRecipeListBinding.inflate(inflater,container,false)
 
-         binding.RecipeRecyclerView.layoutManager = LinearLayoutManager(context)
+       //  binding.RecipeRecyclerView.layoutManager = LinearLayoutManager(context)
+
 
         val recipes = recipeListViewModel.recipes
         val adapter = RecipeListAdapter(recipes)
-        binding.RecipeRecyclerView.adapter = adapter
+        //binding.RecipeRecyclerView.adapter = adapter
 
         return binding.root
     }
