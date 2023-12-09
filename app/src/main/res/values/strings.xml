@@ -5,6 +5,13 @@
     <string name="recipe_title_hint">What is the recipe name</string>
 
     <string name="mealtype_label">Meal Type:</string>
+    <string-array name="mealtype_array">
+        <item>select mealtype</item>
+        <item>Breakfast</item>
+        <item>Lunch</item>
+        <item>Dinner</item>
+        <item>Dessert</item>
+    </string-array>
 
     <string name="preptime_label">Prep Time:</string>
     <string name="preptime_hint">preptime</string>
@@ -19,4 +26,6 @@
     <string name="step_hint">Enter Steps</string>
 
     <string name="submit_button">Submit</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
