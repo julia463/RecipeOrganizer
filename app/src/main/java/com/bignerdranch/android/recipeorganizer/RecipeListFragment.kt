@@ -41,8 +41,8 @@ class RecipeListFragment : Fragment() {
         filterByMealType("all")
 
         // Initialize adapter with the current list of recipes
-        //recipeAdapter = RecipeAdapter(recipes, object : RecipeAdapter.OnItemClickListener {
-        recipeAdapter = RecipeAdapter(filteredRecipes, object : RecipeAdapter.OnItemClickListener {
+        recipeAdapter = RecipeAdapter(recipes, object : RecipeAdapter.OnItemClickListener {
+        //recipeAdapter = RecipeAdapter(filteredRecipes, object : RecipeAdapter.OnItemClickListener {
             override fun onItemClick(recipe: Recipe) {
                 // Handle item click, for example, show detailed view
                 showRecipeDetails(recipe)
@@ -73,7 +73,6 @@ class RecipeListFragment : Fragment() {
     fun onRecipeCreated(newRecipe: Recipe) {
         // Add the new recipe to the list and update the adapter
         recipes.add(newRecipe)
-        filteredRecipes.add(newRecipe)
         recipeAdapter.notifyItemInserted(recipes.size - 1)
 
         Log.d("RecipeListFragment", "Recipe added: $newRecipe")
@@ -82,10 +81,12 @@ class RecipeListFragment : Fragment() {
 
     fun onRecipesFiltered(){
        try{
-           recipeAdapter.notifyItemRangeChanged(0,recipes.size-1);
+          // recipeAdapter.notifyItemRangeChanged(0,recipes.size-1);
+           recipeAdapter.notifyDataSetChanged()
+           Log.d("successful","slay")
 
        } catch (e:Exception) {
-           Log.d("FLOP","it was a flop :(")
+           Log.d("Exception","$e")
 
        }
 
@@ -93,35 +94,27 @@ class RecipeListFragment : Fragment() {
     }
 
 
-    /*//Filters recipe based on the meal type
-    fun filterByMealType(){
-        desiredMealType = (requireActivity() as MainActivity).getSpinnerSelectedItem()
-        if(desiredMealType == "all"){
-            filteredRecipes = recipes
-        } else {
-            //var filteredRecipes = recipes.filter{it.mealType == desiredMealType}
-            filteredRecipes = recipes.filter{it.mealType == desiredMealType}.toMutableList()
-        }
-    } */
 
     fun filterByMealType(desiredMealType:String){
         Log.d("Desired meal type","$desiredMealType")
 
         //desiredMealType = (requireActivity() as MainActivity).getSpinnerSelectedItem()
         if(desiredMealType == "all"){
-            filteredRecipes = recipes
+            recipes = recipes
         } else {
             //var filteredRecipes = recipes.filter{it.mealType == desiredMealType}
-            filteredRecipes = recipes.filter{it.mealType == desiredMealType}.toMutableList()
+            recipes = recipes.filter{it.mealType == desiredMealType}.toMutableList()
         }
 
-       // recipes = filteredRecipes
 
         // have to modify the original one
         //make a new list that will hold the original one
 
         val mainActivity = requireActivity() as? MainActivity
         mainActivity?.onRecipeListFiltered()
+
+        //recipeAdapter.notifyDataSetChanged()
+        //recipeAdapter.notifyItemRangeChanged(0,recipes.size)
 
         requireActivity().supportFragmentManager.popBackStack()
 
