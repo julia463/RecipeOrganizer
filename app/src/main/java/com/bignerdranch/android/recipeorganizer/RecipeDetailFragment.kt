@@ -1,6 +1,7 @@
 package com.bignerdranch.android.recipeorganizer
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,9 +27,12 @@ class RecipeDetailFragment : Fragment() {
 
         // Check if selectedRecipe is set and if the view is not null
         if (::selectedRecipe.isInitialized && view != null) {
+
             // Populate the TextView fields with recipe details
             view.findViewById<TextView>(R.id.recipe_title)?.text = selectedRecipe.name
-            view.findViewById<Spinner>(R.id.spinner)?.setSelection(getMealTypeIndex(selectedRecipe.mealType))
+            //view.findViewById<Spinner>(R.id.spinner)?.setSelection(getMealTypeIndex(selectedRecipe.mealType))
+            //view.findViewById<Spinner>(R.id.filter)?.setSelection(getMealTypeIndex(selectedRecipe.mealType))
+            view.findViewById<TextView>(R.id.mealtype)?.text=selectedRecipe.mealType
             view.findViewById<TextView>(R.id.preptime_info)?.text = selectedRecipe.prepTime
             view.findViewById<TextView>(R.id.servingsize_info)?.text = selectedRecipe.servingSize
 

@@ -68,11 +68,19 @@
             android:text="@string/mealtype_label"
             android:textAppearance="?attr/textAppearanceHeadline6"/>
 
-        <Spinner
+      <!--  <Spinner
             android:id="@+id/spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="48dp" />
+            android:minHeight="48dp" /> -->
+
+        <TextView
+            android:id="@+id/mealtype"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+
+            />
 
         <TextView
             android:layout_width="match_parent"

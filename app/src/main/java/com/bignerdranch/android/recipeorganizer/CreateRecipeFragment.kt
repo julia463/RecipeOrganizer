@@ -24,6 +24,7 @@ class CreateRecipeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         val view = inflater.inflate(R.layout.fragment_create_recipe, container, false)
 
         spinner = view.findViewById(R.id.spinner)
@@ -88,6 +89,16 @@ class CreateRecipeFragment : Fragment() {
         val servingSize = servingSizeEditText.text.toString()
         val ingredients = getIngredients()
         val steps = getSteps()
+
+        Log.d("meal type","$mealType")
+       /* for(i in ingredients){
+            Log.d("current ingredient","$i")
+        }
+        Log.d("ingredients","$ingredients")
+        Log.d("steps","$steps")
+        for(i in steps){
+            Log.d("current step","$i")
+        } */
 
         // Create a new Recipe object
         val newRecipe = Recipe(UUID.randomUUID(), name, mealType, prepTime, servingSize, ingredients, steps)
