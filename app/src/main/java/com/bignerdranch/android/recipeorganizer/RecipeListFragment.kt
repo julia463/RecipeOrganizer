@@ -17,7 +17,6 @@ class RecipeListFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var recipeAdapter: RecipeAdapter
-    //private val recipes: MutableList<Recipe> = mutableListOf()
     private var recipes: MutableList<Recipe> = mutableListOf()
     private var desiredMealType = "all"
     //Will be the one that is changed
@@ -121,7 +120,6 @@ class RecipeListFragment : Fragment() {
     fun filterByMealType(desiredMealType:String){
         Log.d("Desired meal type","$desiredMealType")
 
-        //desiredMealType = (requireActivity() as MainActivity).getSpinnerSelectedItem()
         if(desiredMealType == "all"){
           //  recipes = recipes
             filteredRecipes = recipes
@@ -137,8 +135,6 @@ class RecipeListFragment : Fragment() {
         val mainActivity = requireActivity() as? MainActivity
         mainActivity?.onRecipeListFiltered()
 
-        //recipeAdapter.notifyDataSetChanged()
-        //recipeAdapter.notifyItemRangeChanged(0,recipes.size)
 
         requireActivity().supportFragmentManager.popBackStack()
 
