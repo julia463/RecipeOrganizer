@@ -38,7 +38,6 @@ class RecipeListFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
 
-        filterByMealType("all")
 
         // Initialize adapter with the current list of recipes
         recipeAdapter = RecipeAdapter(recipes, object : RecipeAdapter.OnItemClickListener {
@@ -80,9 +79,18 @@ class RecipeListFragment : Fragment() {
     }
 
     fun onRecipesFiltered(){
+
        try{
-          // recipeAdapter.notifyItemRangeChanged(0,recipes.size-1);
-           recipeAdapter.notifyDataSetChanged()
+          // recipeAdapter.notifyItemRangeChanged(0,recipes.size-1); //recipeAdapter.notifyDataSetChanged()
+           recipeAdapter = RecipeAdapter(recipes, object : RecipeAdapter.OnItemClickListener {
+               //recipeAdapter = RecipeAdapter(filteredRecipes, object : RecipeAdapter.OnItemClickListener {
+               override fun onItemClick(recipe: Recipe) {
+                   // Handle item click, for example, show detailed view
+                   showRecipeDetails(recipe)
+               }
+           })
+           recyclerView.swapAdapter(recipeAdapter,false)
+           Log.d("Current list of recipes","$recipes")
            Log.d("successful","slay")
 
        } catch (e:Exception) {
