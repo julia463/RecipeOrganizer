@@ -93,11 +93,14 @@ class MainActivity : AppCompatActivity() {
         recipeListFragment?.onRecipesFiltered()
     }
     fun onAppNameClick(view: View) {
-        val recipeListFragment = RecipeListFragment()
+       val recipeListFragment = RecipeListFragment()
        // recipeListFragment = RecipeListFragment()
+        //Log.d("App name clicked","true");
+       // val recipeListFragment = supportFragmentManager.findFragmentById(R.id.container) as? RecipeListFragment
         supportFragmentManager.beginTransaction()
             .replace(R.id.container, recipeListFragment)
             .commit()
+       // recipeListFragment?.onHomeBtnClicked()
     }
 
     private fun replaceFragment(fragment: Fragment, addToBackStack: Boolean) {

@@ -82,7 +82,8 @@ class RecipeListFragment : Fragment() {
 
        try{
           // recipeAdapter.notifyItemRangeChanged(0,recipes.size-1); //recipeAdapter.notifyDataSetChanged()
-           recipeAdapter = RecipeAdapter(recipes, object : RecipeAdapter.OnItemClickListener {
+           //recipeAdapter = RecipeAdapter(recipes, object : RecipeAdapter.OnItemClickListener {
+           recipeAdapter = RecipeAdapter(filteredRecipes, object : RecipeAdapter.OnItemClickListener {
                //recipeAdapter = RecipeAdapter(filteredRecipes, object : RecipeAdapter.OnItemClickListener {
                override fun onItemClick(recipe: Recipe) {
                    // Handle item click, for example, show detailed view
@@ -97,8 +98,22 @@ class RecipeListFragment : Fragment() {
            Log.d("Exception","$e")
 
        }
+    }
 
+    fun onHomeBtnClicked(){
+        try{
+            recipeAdapter = RecipeAdapter(recipes, object : RecipeAdapter.OnItemClickListener {
+                override fun onItemClick(recipe: Recipe) {
+                    // Handle item click, for example, show detailed view
+                    showRecipeDetails(recipe)
+                }
+            })
+            recyclerView.swapAdapter(recipeAdapter, false)
+            Log.d("SLAY :)","made it to home page")
 
+        } catch (e:Exception){
+            Log.d("Exception","$e")
+        }
     }
 
 
@@ -108,10 +123,11 @@ class RecipeListFragment : Fragment() {
 
         //desiredMealType = (requireActivity() as MainActivity).getSpinnerSelectedItem()
         if(desiredMealType == "all"){
-            recipes = recipes
+          //  recipes = recipes
+            filteredRecipes = recipes
         } else {
-            //var filteredRecipes = recipes.filter{it.mealType == desiredMealType}
-            recipes = recipes.filter{it.mealType == desiredMealType}.toMutableList()
+             filteredRecipes = recipes.filter{it.mealType == desiredMealType}.toMutableList()
+           // recipes = recipes.filter{it.mealType == desiredMealType}.toMutableList()
         }
 
 
